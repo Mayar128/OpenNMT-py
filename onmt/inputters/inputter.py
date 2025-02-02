@@ -167,3 +167,25 @@ def dict_to_vocabs(vocabs_dict):
         for feat_vocab in vocabs_dict["src_feats"]:
             vocabs["src_feats"].append(pyonmttok.build_vocab_from_tokens(feat_vocab))
     return vocabs
+
+
+from onmt.inputters.inputter import InputFeatures
+
+class SignLanguageFeatures(InputFeatures):
+    def __init__(self):
+        super().__init__()
+        
+    @staticmethod
+    def from_dict(example_dict):
+        features = SignLanguageFeatures()
+        features.src = example_dict['src']
+        features.src_mask = example_dict['src_mask']
+        features.tgt = example_dict['tgt']
+        return features
+    
+    def to_dict(self):
+        return {
+            'src': self.src,
+            'src_mask': self.src_mask,
+            'tgt': self.tgt
+        }

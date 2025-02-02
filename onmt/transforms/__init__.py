@@ -11,6 +11,11 @@ from .transform import (
     Transform,
 )
 
+#SLP
+from .custom_transform import NoOpTransform
+__all__ += ["NoOpTransform"]
+
+
 
 AVAILABLE_TRANSFORMS = {}
 

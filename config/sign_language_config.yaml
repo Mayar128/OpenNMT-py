@@ -1,0 +1,28 @@
+# Data configuration
+data:
+    corpus_1:
+        path_src: path/to/source/data
+        path_tgt: path/to/target/data
+        transforms: [no_op]  # Use our custom NoOpTransform
+
+# Model configuration
+model_dtype: "fp32"
+save_data: experiments/sign_language
+src_vocab: path/to/source/vocab
+tgt_vocab: path/to/target/vocab
+share_vocab: false
+
+# Training configuration
+save_model: experiments/sign_language
+save_checkpoint_steps: 500
+train_steps: 100000
+valid_steps: 500
+batch_size: 64
+batch_type: "tokens"
+valid_batch_size: 32
+
+# Optimization
+optim: "adam"
+learning_rate: 0.0002
+warmup_steps: 8000
+decay_method: "noam"
